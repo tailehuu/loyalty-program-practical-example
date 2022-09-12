@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20220912075311) do
 
-  create_table "points", force: :cascade do |t|
+  create_table "earning_histories", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "point"
     t.text     "note"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20220912075311) do
     t.datetime "updated_at"
   end
 
-  add_index "points", ["user_id", "created_at"], name: "index_points_on_user_id_and_created_at"
+  add_index "earning_histories", ["user_id", "created_at"], name: "index_earning_histories_on_user_id_and_created_at"
 
   create_table "rewards", force: :cascade do |t|
     t.string   "name"

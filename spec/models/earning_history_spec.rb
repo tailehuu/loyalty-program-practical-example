@@ -2,21 +2,21 @@
 
 require 'rails_helper'
 
-describe Point do
+describe EarningHistory do
   describe '.valid?' do
     let(:user) { create(:user) }
-    let(:value) { 10 }
+    let(:point) { 10 }
 
-    let(:point) do
+    let(:earning_history) do
       build(
-        :point,
+        :earning_history,
         user: user,
-        point: value
+        point: point
       )
     end
 
     it 'returns true' do
-      expect(point.valid?).to eq true
+      expect(earning_history.valid?).to eq true
     end
 
     context 'user_id is empty' do
@@ -24,28 +24,28 @@ describe Point do
       let(:errors) { ["can't be blank"] }
 
       it 'returns false' do
-        expect(point.valid?).to eq false
-        expect(point.errors[:user_id]).to eq errors
+        expect(earning_history.valid?).to eq false
+        expect(earning_history.errors[:user_id]).to eq errors
       end
     end
 
     context 'point is empty' do
-      let(:value) { nil }
+      let(:point) { nil }
       let(:errors) { ["can't be blank", 'is not a number'] }
 
       it 'returns false' do
-        expect(point.valid?).to eq false
-        expect(point.errors[:point]).to eq errors
+        expect(earning_history.valid?).to eq false
+        expect(earning_history.errors[:point]).to eq errors
       end
     end
 
     context 'point is smaller than zero' do
-      let(:value) { -10 }
+      let(:point) { -10 }
       let(:errors) { ['must be greater than or equal to 0'] }
 
       it 'returns false' do
-        expect(point.valid?).to eq false
-        expect(point.errors[:point]).to eq errors
+        expect(earning_history.valid?).to eq false
+        expect(earning_history.errors[:point]).to eq errors
       end
     end
   end
