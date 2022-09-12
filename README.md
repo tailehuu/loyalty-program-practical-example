@@ -7,6 +7,6 @@
 
 ## Proposal
 
-(Proposal)[https://github.com/tailehuu/loyalty-program-practical-example/wiki]
+[Proposal](https://github.com/tailehuu/loyalty-program-practical-example/wiki)
 
 Thanks!
