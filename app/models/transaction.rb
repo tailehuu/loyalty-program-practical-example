@@ -13,11 +13,7 @@ class Transaction < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :user_id, :amount, :currency, presence: true
-  validates :transaction_type,
-            presence: true,
-            inclusion: { in: TRANSACTION_TYPES.values, message: "%{value} is not valid" }
-  validates :status,
-            presence: true,
-            inclusion: { in: STATUSES.values, message: "%{value} is not valid" }
+  validates :user_id, :amount, :currency, :transaction_type, :status, presence: true
+  validates :transaction_type, inclusion: { in: TRANSACTION_TYPES.values, message: "%{value} is not valid" }
+  validates :status, inclusion: { in: STATUSES.values, message: "%{value} is not valid" }
 end

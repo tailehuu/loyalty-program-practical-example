@@ -31,7 +31,17 @@ describe Point do
 
     context 'point is empty' do
       let(:value) { nil }
-      let(:errors) { ["can't be blank"] }
+      let(:errors) { ["can't be blank", 'is not a number'] }
+
+      it 'returns false' do
+        expect(point.valid?).to eq false
+        expect(point.errors[:point]).to eq errors
+      end
+    end
+
+    context 'point is smaller than zero' do
+      let(:value) { -10 }
+      let(:errors) { ['must be greater than or equal to 0'] }
 
       it 'returns false' do
         expect(point.valid?).to eq false

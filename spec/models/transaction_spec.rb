@@ -55,6 +55,16 @@ describe Transaction do
       end
     end
 
+    context 'transaction_type is empty' do
+      let(:transaction_type) { nil }
+      let(:errors) { ["can't be blank", ' is not valid'] }
+
+      it 'returns false' do
+        expect(transaction.valid?).to eq false
+        expect(transaction.errors[:transaction_type]).to eq errors
+      end
+    end
+
     context 'transaction_type is invalid' do
       let(:transaction_type) { 'BUY-SOMETHING' }
       let(:errors) { ['BUY-SOMETHING is not valid'] }
@@ -62,6 +72,16 @@ describe Transaction do
       it 'returns false' do
         expect(transaction.valid?).to eq false
         expect(transaction.errors[:transaction_type]).to eq errors
+      end
+    end
+
+    context 'status is empty' do
+      let(:status) { nil }
+      let(:errors) { ["can't be blank", ' is not valid'] }
+
+      it 'returns false' do
+        expect(transaction.valid?).to eq false
+        expect(transaction.errors[:status]).to eq errors
       end
     end
 

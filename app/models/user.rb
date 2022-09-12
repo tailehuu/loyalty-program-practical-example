@@ -18,10 +18,8 @@ class User < ActiveRecord::Base
   has_many :transactions
   has_many :user_rewards
 
-  validates :name, presence: true
-  validates :tier,
-            presence: true,
-            inclusion: { in: TIERS.values, message: "%{value} is not valid" }
-  validates :currency,
-            inclusion: { in: CURRENCIES.values, message: "%{value} is not valid" }
+  validates :name, :point, :tier, :currency, presence: true
+  validates :point, numericality: { greater_than_or_equal_to: 0 }
+  validates :tier, inclusion: { in: TIERS.values, message: "%{value} is not valid" }
+  validates :currency, inclusion: { in: CURRENCIES.values, message: "%{value} is not valid" }
 end

@@ -43,7 +43,7 @@ describe UserReward do
 
     context 'status is empty' do
       let(:status) { nil }
-      let(:errors) { ["can't be blank", " is not valid"] }
+      let(:errors) { ["can't be blank", ' is not valid'] }
 
       it 'returns false' do
         expect(user_reward.valid?).to eq false
