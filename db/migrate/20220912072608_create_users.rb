@@ -3,8 +3,8 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :dob
-      t.integer :point, default: 0
-      t.string :tier
+      t.integer :point,   default: 0
+      t.string :tier,     default: 'standard'
       t.string :currency, default: 'USD'
 
       t.timestamps

@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20220912075311) do
     t.string   "name"
     t.string   "dob"
     t.integer  "point",      default: 0
-    t.string   "tier"
+    t.string   "tier",       default: "standard"
     t.string   "currency",   default: "USD"
     t.datetime "created_at"
     t.datetime "updated_at"
