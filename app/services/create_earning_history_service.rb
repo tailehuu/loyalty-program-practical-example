@@ -19,6 +19,8 @@ class CreateEarningHistoryService
       update_status_transaction(Transaction::STATUSES[:processed])
     end
 
+    enqueue_sixty_days_free_movie_worker
+
     true_with_message('done')
   rescue StandardError => e
     false_with_error(e.message)
@@ -45,6 +47,10 @@ class CreateEarningHistoryService
 
   def update_user
     user.update_attributes(point: user.point + earning_points, tier: transaction.calculate_tier)
+  end
+
+  def enqueue_sixty_days_free_movie_worker
+    Rewards::SixtyDaysFreeMovieWorker.perform_in(60.days, user.id) if user.transactions.count == 1
   end
 
   def transaction
