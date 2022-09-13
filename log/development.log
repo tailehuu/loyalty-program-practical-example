@@ -409,3 +409,571 @@ DEPRECATION WARNING: `#timestamps` was called without specifying an option for `
             FROM sqlite_temp_master
             WHERE name='index_users_on_created_at' AND type='index'
 
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Tai LE"], ["created_at", "2022-09-13 04:02:45.095725"], ["updated_at", "2022-09-13 04:02:45.095725"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT "transactions".* FROM "transactions" WHERE "transactions"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 100.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 04:05:01.402813"], ["updated_at", "2022-09-13 04:05:01.402813"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "transactions" SET "amount" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["amount", 560.0], ["updated_at", "2022-09-13 04:25:35.705671"], ["id", 1]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "transactions" SET "currency" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["currency", "EUR"], ["updated_at", "2022-09-13 04:28:24.042917"], ["id", 1]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "transactions" SET "amount" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["amount", 200.0], ["updated_at", "2022-09-13 04:29:24.423261"], ["id", 1]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "transactions" SET "currency" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["currency", "USD"], ["updated_at", "2022-09-13 04:30:06.973428"], ["id", 1]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "transactions" ("user_id", "amount", "currency", "transaction_type", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["amount", 500.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "processed"], ["created_at", "2022-09-13 04:30:39.454783"], ["updated_at", "2022-09-13 04:30:39.454783"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.7ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 980], ["updated_at", "2022-09-13 04:45:44.240644"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY "transactions"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Coffee Reward' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Coffee Reward"], ["created_at", "2022-09-13 05:02:28.991479"], ["updated_at", "2022-09-13 05:02:28.991479"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '5% Cash Rebate Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "5% Cash Rebate Reward"], ["created_at", "2022-09-13 05:02:28.994161"], ["updated_at", "2022-09-13 05:02:28.994161"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Movie Ticket Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Movie Ticket Reward"], ["created_at", "2022-09-13 05:02:28.996227"], ["updated_at", "2022-09-13 05:02:28.996227"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '4x Airport Lounge Access Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "4x Airport Lounge Access Reward"], ["created_at", "2022-09-13 05:02:28.998301"], ["updated_at", "2022-09-13 05:02:28.998301"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mReward Load (0.2ms)[0m  [1mSELECT  "rewards".* FROM "rewards" WHERE "rewards"."name" = ? LIMIT 1[0m  [["name", "4x Airport Lounge Access Reward"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mReward Load (0.2ms)[0m  [1mSELECT "rewards".* FROM "rewards" INNER JOIN "user_rewards" ON "rewards"."id" = "user_rewards"."reward_id" WHERE "user_rewards"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUserReward Load (0.4ms)[0m  SELECT "user_rewards".* FROM "user_rewards" WHERE "user_rewards"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 100.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:19:20.319372"], ["updated_at", "2022-09-13 05:19:20.319372"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 10], ["user_id", 1], ["created_at", "2022-09-13 05:19:32.789239"], ["updated_at", "2022-09-13 05:19:32.789239"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 990], ["updated_at", "2022-09-13 05:19:32.790824"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 100.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:21:01.528071"], ["updated_at", "2022-09-13 05:21:01.528071"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.8ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 10], ["user_id", 1], ["created_at", "2022-09-13 05:21:15.907187"], ["updated_at", "2022-09-13 05:21:15.907187"]]
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 990], ["updated_at", "2022-09-13 05:21:15.910812"], ["id", 1]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:22:32.927331"], ["updated_at", "2022-09-13 05:22:32.927331"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 50], ["user_id", 1], ["created_at", "2022-09-13 05:22:44.757852"], ["updated_at", "2022-09-13 05:22:44.757852"]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "point" = ?, "tier" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1040], ["tier", "gold"], ["updated_at", "2022-09-13 05:22:44.760549"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[35mReward Load (0.2ms)[0m  SELECT  "rewards".* FROM "rewards" WHERE "rewards"."name" = ? LIMIT 1  [["name", "4x Airport Lounge Access Reward"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:24:54.067473"], ["updated_at", "2022-09-13 05:24:54.067473"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 50], ["user_id", 1], ["created_at", "2022-09-13 05:25:10.531287"], ["updated_at", "2022-09-13 05:25:10.531287"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1090], ["updated_at", "2022-09-13 05:25:10.532607"], ["id", 1]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:26:11.900463"], ["updated_at", "2022-09-13 05:26:11.900463"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 50], ["user_id", 1], ["created_at", "2022-09-13 05:26:23.713672"], ["updated_at", "2022-09-13 05:26:23.713672"]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "point" = ?, "tier" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1040], ["tier", "gold"], ["updated_at", "2022-09-13 05:26:23.716647"], ["id", 1]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:29:14.288182"], ["updated_at", "2022-09-13 05:29:14.288182"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 50], ["user_id", 1], ["created_at", "2022-09-13 05:30:17.938478"], ["updated_at", "2022-09-13 05:30:17.938478"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 850], ["updated_at", "2022-09-13 05:30:17.940404"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:31:09.164638"], ["updated_at", "2022-09-13 05:31:09.164638"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReward Load (0.3ms)[0m  SELECT  "rewards".* FROM "rewards" WHERE "rewards"."name" = ? LIMIT 1  [["name", "4x Airport Lounge Access Reward"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:33:53.172095"], ["updated_at", "2022-09-13 05:33:53.172095"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReward Load (0.1ms)[0m  SELECT  "rewards".* FROM "rewards" WHERE "rewards"."name" = ? LIMIT 1  [["name", "4x Airport Lounge Access Reward"]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "user_rewards" ("reward_id", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reward_id", 4], ["status", "pending"], ["user_id", 1], ["created_at", "2022-09-13 05:34:06.534799"], ["updated_at", "2022-09-13 05:34:06.534799"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 50], ["user_id", 1], ["created_at", "2022-09-13 05:34:06.540018"], ["updated_at", "2022-09-13 05:34:06.540018"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "tier" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1040], ["tier", "gold"], ["updated_at", "2022-09-13 05:34:06.540967"], ["id", 1]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "USD"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:35:44.858767"], ["updated_at", "2022-09-13 05:35:44.858767"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReward Load (0.1ms)[0m  SELECT  "rewards".* FROM "rewards" WHERE "rewards"."name" = ? LIMIT 1  [["name", "4x Airport Lounge Access Reward"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "user_rewards" ("reward_id", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reward_id", 4], ["status", "pending"], ["user_id", 1], ["created_at", "2022-09-13 05:35:57.311678"], ["updated_at", "2022-09-13 05:35:57.311678"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 50], ["user_id", 1], ["created_at", "2022-09-13 05:35:57.315943"], ["updated_at", "2022-09-13 05:35:57.315943"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "tier" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1040], ["tier", "gold"], ["updated_at", "2022-09-13 05:35:57.316918"], ["id", 1]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 05:36:40.372696"], ["updated_at", "2022-09-13 05:36:40.372696"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mTransaction Load (0.6ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 100], ["user_id", 1], ["created_at", "2022-09-13 05:36:54.374617"], ["updated_at", "2022-09-13 05:36:54.374617"]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1140], ["updated_at", "2022-09-13 05:36:54.377362"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "processed"], ["user_id", 1], ["created_at", "2022-09-13 07:03:54.241311"], ["updated_at", "2022-09-13 07:03:54.241311"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 1], ["created_at", "2022-09-13 07:04:41.159023"], ["updated_at", "2022-09-13 07:04:41.159023"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[35mTransaction Load (0.5ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processing"], ["updated_at", "2022-09-13 07:04:52.087461"], ["id", 14]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "earning_histories" ("point", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["point", 100], ["user_id", 1], ["created_at", "2022-09-13 07:04:52.120122"], ["updated_at", "2022-09-13 07:04:52.120122"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 1240], ["updated_at", "2022-09-13 07:04:52.121658"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT "transactions".* FROM "transactions" WHERE "transactions"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.5ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."user_id" = ?  ORDER BY "transactions"."id" DESC LIMIT 1  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."user_id" = ?  ORDER BY "transactions"."id" DESC LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 1], ["created_at", "2022-09-13 07:07:03.328125"], ["updated_at", "2022-09-13 07:07:03.328125"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 07:07:17.573366"], ["id", 15]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 from transaction 15"], ["user_id", 1], ["created_at", "2022-09-13 07:07:17.595232"], ["updated_at", "2022-09-13 07:07:17.595232"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 1340], ["updated_at", "2022-09-13 07:07:17.596550"], ["id", 1]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.4ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."user_id" = ?  ORDER BY "transactions"."id" DESC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mEarningHistory Load (0.3ms)[0m  SELECT "earning_histories".* FROM "earning_histories" WHERE "earning_histories"."user_id" = ?  [["user_id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.4ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.5ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.5ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.9ms)[0m  DELETE FROM "rewards"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mReward Exists (0.1ms)[0m  SELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Coffee Reward' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Free Coffee Reward"], ["created_at", "2022-09-13 08:04:20.128734"], ["updated_at", "2022-09-13 08:04:20.128734"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mReward Exists (0.1ms)[0m  SELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '5% Cash Rebate Reward' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "5% Cash Rebate Reward"], ["created_at", "2022-09-13 08:04:20.132736"], ["updated_at", "2022-09-13 08:04:20.132736"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mReward Exists (0.1ms)[0m  SELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Movie Ticket Reward' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Free Movie Ticket Reward"], ["created_at", "2022-09-13 08:04:20.134801"], ["updated_at", "2022-09-13 08:04:20.134801"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mReward Exists (0.1ms)[0m  SELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '4x Airport Lounge Access Reward' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "4x Airport Lounge Access Reward"], ["created_at", "2022-09-13 08:04:20.136742"], ["updated_at", "2022-09-13 08:04:20.136742"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.8ms)[0m  DELETE FROM "rewards"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (2.6ms)[0m  DELETE FROM "rewards"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM "rewards"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM "rewards"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.6ms)[0m  DELETE FROM "rewards"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (2.5ms)[0m  DELETE FROM "rewards"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (2.3ms)[0m  DELETE FROM "rewards"
+  [1m[36mSQL (1.4ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Coffee Reward' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Coffee Reward"], ["created_at", "2022-09-13 08:17:45.386562"], ["updated_at", "2022-09-13 08:17:45.386562"]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '5% Cash Rebate Reward' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "5% Cash Rebate Reward"], ["created_at", "2022-09-13 08:17:45.391777"], ["updated_at", "2022-09-13 08:17:45.391777"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Movie Ticket Reward' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Movie Ticket Reward"], ["created_at", "2022-09-13 08:17:45.396687"], ["updated_at", "2022-09-13 08:17:45.396687"]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '4x Airport Lounge Access Reward' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "4x Airport Lounge Access Reward"], ["created_at", "2022-09-13 08:17:45.401215"], ["updated_at", "2022-09-13 08:17:45.401215"]]
+  [1m[36m (57.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (2.5ms)[0m  DELETE FROM "rewards"
+  [1m[36mSQL (2.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Coffee Reward' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Coffee Reward"], ["created_at", "2022-09-13 08:17:54.653780"], ["updated_at", "2022-09-13 08:17:54.653780"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '5% Cash Rebate Reward' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "5% Cash Rebate Reward"], ["created_at", "2022-09-13 08:17:54.659818"], ["updated_at", "2022-09-13 08:17:54.659818"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Movie Ticket Reward' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Movie Ticket Reward"], ["created_at", "2022-09-13 08:17:54.664686"], ["updated_at", "2022-09-13 08:17:54.664686"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '4x Airport Lounge Access Reward' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "4x Airport Lounge Access Reward"], ["created_at", "2022-09-13 08:17:54.669324"], ["updated_at", "2022-09-13 08:17:54.669324"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("name", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tony LE"], ["dob", "1981-04-18"], ["created_at", "2022-09-13 08:17:54.677832"], ["updated_at", "2022-09-13 08:17:54.677832"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Wendy LE"], ["dob", "2015-02-05"], ["created_at", "2022-09-13 08:17:54.681531"], ["updated_at", "2022-09-13 08:17:54.681531"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "dob", "currency", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Jacky LE"], ["dob", "2016-11-19"], ["currency", "EUR"], ["created_at", "2022-09-13 08:17:54.684246"], ["updated_at", "2022-09-13 08:17:54.684246"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.6ms)[0m  DELETE FROM "rewards"
+  [1m[36mSQL (1.3ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Coffee Reward' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Coffee Reward"], ["created_at", "2022-09-13 08:18:42.190158"], ["updated_at", "2022-09-13 08:18:42.190158"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '5% Cash Rebate Reward' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "5% Cash Rebate Reward"], ["created_at", "2022-09-13 08:18:42.193574"], ["updated_at", "2022-09-13 08:18:42.193574"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Movie Ticket Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Movie Ticket Reward"], ["created_at", "2022-09-13 08:18:42.196547"], ["updated_at", "2022-09-13 08:18:42.196547"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '4x Airport Lounge Access Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "4x Airport Lounge Access Reward"], ["created_at", "2022-09-13 08:18:42.198647"], ["updated_at", "2022-09-13 08:18:42.198647"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("name", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tony LE"], ["dob", "1981-04-18"], ["created_at", "2022-09-13 08:18:42.203537"], ["updated_at", "2022-09-13 08:18:42.203537"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "dob", "tier", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Wendy LE"], ["dob", "2015-02-05"], ["tier", "gold"], ["created_at", "2022-09-13 08:18:42.207066"], ["updated_at", "2022-09-13 08:18:42.207066"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "dob", "tier", "currency", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Jacky LE"], ["dob", "2016-11-19"], ["tier", "premium"], ["currency", "EUR"], ["created_at", "2022-09-13 08:18:42.209355"], ["updated_at", "2022-09-13 08:18:42.209355"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.4ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTransaction Load (0.1ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM "rewards"
+  [1m[36mSQL (1.5ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Coffee Reward' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Coffee Reward"], ["created_at", "2022-09-13 08:41:24.325833"], ["updated_at", "2022-09-13 08:41:24.325833"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '5% Cash Rebate Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "5% Cash Rebate Reward"], ["created_at", "2022-09-13 08:41:24.328648"], ["updated_at", "2022-09-13 08:41:24.328648"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = 'Free Movie Ticket Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Free Movie Ticket Reward"], ["created_at", "2022-09-13 08:41:24.330592"], ["updated_at", "2022-09-13 08:41:24.330592"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mReward Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "rewards" WHERE "rewards"."name" = '4x Airport Lounge Access Reward' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rewards" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "4x Airport Lounge Access Reward"], ["created_at", "2022-09-13 08:41:24.332348"], ["updated_at", "2022-09-13 08:41:24.332348"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tony LE"], ["dob", "1981-04-18"], ["created_at", "2022-09-13 08:41:24.336636"], ["updated_at", "2022-09-13 08:41:24.336636"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "dob", "tier", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Wendy LE"], ["dob", "2015-02-05"], ["tier", "gold"], ["created_at", "2022-09-13 08:41:24.338977"], ["updated_at", "2022-09-13 08:41:24.338977"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "dob", "tier", "currency", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Jacky LE"], ["dob", "2016-11-19"], ["tier", "premium"], ["currency", "EUR"], ["created_at", "2022-09-13 08:41:24.340864"], ["updated_at", "2022-09-13 08:41:24.340864"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:41:44.744627"], ["updated_at", "2022-09-13 08:41:44.744627"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 16]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 08:41:48.713903"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 16"], ["user_id", 8], ["created_at", "2022-09-13 08:41:48.735961"], ["updated_at", "2022-09-13 08:41:48.735961"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 100], ["updated_at", "2022-09-13 08:41:48.737127"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:41:48.737948"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:53.126025"], ["updated_at", "2022-09-13 08:42:53.126025"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:54.103220"], ["updated_at", "2022-09-13 08:42:54.103220"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:54.884406"], ["updated_at", "2022-09-13 08:42:54.884406"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:55.613061"], ["updated_at", "2022-09-13 08:42:55.613061"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:56.343747"], ["updated_at", "2022-09-13 08:42:56.343747"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:57.053070"], ["updated_at", "2022-09-13 08:42:57.053070"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:57.828695"], ["updated_at", "2022-09-13 08:42:57.828695"]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:42:58.697090"], ["updated_at", "2022-09-13 08:42:58.697090"]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "transactions" ("amount", "currency", "transaction_type", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 560.0], ["currency", "EUR"], ["transaction_type", "BUY"], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:43:00.238956"], ["updated_at", "2022-09-13 08:43:00.238956"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.200595"], ["id", 17]]
+  [1m[35m (3.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 17"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.211083"], ["updated_at", "2022-09-13 08:43:01.211083"]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 200], ["updated_at", "2022-09-13 08:43:01.213960"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.215300"], ["id", 17]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 18]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.220267"], ["id", 18]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 18"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.225192"], ["updated_at", "2022-09-13 08:43:01.225192"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 300], ["updated_at", "2022-09-13 08:43:01.228087"], ["id", 8]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.229323"], ["id", 18]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 20]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.232423"], ["id", 20]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["point", 100], ["note", "Earn 100 points from transaction id 20"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.237744"], ["updated_at", "2022-09-13 08:43:01.237744"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 400], ["updated_at", "2022-09-13 08:43:01.239239"], ["id", 8]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.240171"], ["id", 20]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 19]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.243158"], ["id", 19]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 19"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.247597"], ["updated_at", "2022-09-13 08:43:01.247597"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 500], ["updated_at", "2022-09-13 08:43:01.248730"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.249464"], ["id", 19]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[35mTransaction Load (0.1ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 22]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.251572"], ["id", 22]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["point", 100], ["note", "Earn 100 points from transaction id 22"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.255405"], ["updated_at", "2022-09-13 08:43:01.255405"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 600], ["updated_at", "2022-09-13 08:43:01.256468"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.258400"], ["id", 22]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 23]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.260919"], ["id", 23]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["point", 100], ["note", "Earn 100 points from transaction id 23"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.263645"], ["updated_at", "2022-09-13 08:43:01.263645"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["point", 700], ["updated_at", "2022-09-13 08:43:01.264675"], ["id", 8]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.265407"], ["id", 23]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 08:43:01.267023"], ["id", 21]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 21"], ["user_id", 8], ["created_at", "2022-09-13 08:43:01.271291"], ["updated_at", "2022-09-13 08:43:01.271291"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 800], ["updated_at", "2022-09-13 08:43:01.272462"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:43:01.273290"], ["id", 21]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.5ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 24]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 08:43:07.825391"], ["id", 24]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 24"], ["user_id", 8], ["created_at", "2022-09-13 08:43:07.831761"], ["updated_at", "2022-09-13 08:43:07.831761"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "point" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 900], ["updated_at", "2022-09-13 08:43:07.833932"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:43:07.835442"], ["id", 24]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processing"], ["updated_at", "2022-09-13 08:43:07.840688"], ["id", 25]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mReward Load (0.1ms)[0m  [1mSELECT  "rewards".* FROM "rewards" WHERE "rewards"."name" = ? LIMIT 1[0m  [["name", "4x Airport Lounge Access Reward"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "user_rewards" ("reward_id", "status", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["reward_id", 24], ["status", "pending"], ["user_id", 8], ["created_at", "2022-09-13 08:43:07.858453"], ["updated_at", "2022-09-13 08:43:07.858453"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "earning_histories" ("point", "note", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["point", 100], ["note", "Earn 100 points from transaction id 25"], ["user_id", 8], ["created_at", "2022-09-13 08:43:07.860267"], ["updated_at", "2022-09-13 08:43:07.860267"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "point" = ?, "tier" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["point", 1000], ["tier", "gold"], ["updated_at", "2022-09-13 08:43:07.861240"], ["id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "transactions" SET "status" = ?, "updated_at" = ? WHERE "transactions"."id" = ?[0m  [["status", "processed"], ["updated_at", "2022-09-13 08:43:07.862134"], ["id", 25]]
+  [1m[35m (1.3ms)[0m  commit transaction
