@@ -53,3 +53,4 @@ end
 gem 'redis', '< 4.6'
 gem 'sidekiq'
 gem 'clockwork'
+gem 'figaro'
