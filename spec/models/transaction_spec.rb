@@ -95,4 +95,16 @@ describe Transaction do
       end
     end
   end
+
+  describe 'callback' do
+    context 'after create transaction' do
+      let(:transaction) { build(:transaction) }
+
+      it 'enqueues CreateEarningHistoryWorker' do
+        expect(CreateEarningHistoryWorker).to receive(:perform_in)
+
+        transaction.save
+      end
+    end
+  end
 end

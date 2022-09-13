@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.9.1'
   gem 'rubocop', require: false
+  gem 'test_after_commit'
 end
 
 group :development do
