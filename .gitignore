@@ -1,1 +1,8 @@
 .idea
+diagram.png
+log
+tmp
+db
+
+# Ignore application configuration
+/config/application.yml
