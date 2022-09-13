@@ -1,0 +1,5 @@
+:concurrency: 5
+:poll_interval: 5
+:vervose: true
+:queues:
+  - [loyalty_q, 20]
