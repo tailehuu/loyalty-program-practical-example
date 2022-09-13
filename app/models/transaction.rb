@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 
 class Transaction < ActiveRecord::Base
-  DEFAULT_EARNING_POINTS = (ENV['DEFAULT_EARNING_POINTS'] || 10).to_i
+  EARNING_RULES = {
+    every_amount: (ENV['EARNING_RULES_EVERY_AMOUNT'] || 100).to_i,
+    point: (ENV['EARNING_RULES_POINT'] || 10).to_i
+  }
+
+  SPECIAL_REWARD = ENV['SPECIAL_REWARD'] || '4x Airport Lounge Access Reward'
+
+  TIER_RULES = {
+    premium: (ENV['TIER_RULES_PREMIUM'] || 5_000).to_i,
+    gold: (ENV['TIER_RULES_GOLD'] || 1_000).to_i
+  }
 
   STATUSES = {
     pending: 'pending',
@@ -23,7 +33,7 @@ class Transaction < ActiveRecord::Base
 
   def calculate_earning_points
     @calculate_earning_points ||= begin
-      earning_points = (amount.to_i / 100) * DEFAULT_EARNING_POINTS
+      earning_points = (amount.to_i / EARNING_RULES[:every_amount]) * EARNING_RULES[:point]
       earning_points *= 2 if currency != User::CURRENCIES[:usd]
       earning_points
     end
@@ -32,9 +42,9 @@ class Transaction < ActiveRecord::Base
   def calculate_tier
     @calculate_tier ||= begin
       points = user.point + calculate_earning_points
-      if points >= 5_000
+      if points >= TIER_RULES[:premium]
         User::TIERS[:premium]
-      elsif points >= 1_000
+      elsif points >= TIER_RULES[:gold]
         User::TIERS[:gold]
       else
         User::TIERS[:standard]
@@ -45,7 +55,7 @@ class Transaction < ActiveRecord::Base
   def calculate_rewards
     if calculate_tier == User::TIERS[:gold] && user.tier == User::TIERS[:standard]
       [
-        Reward.find_by_name('4x Airport Lounge Access Reward')
+        Reward.find_by_name(SPECIAL_REWARD)
       ]
     else
       []

@@ -93,7 +93,7 @@ describe CreateEarningHistoryService do
     end
 
     context 'user becomes a gold tier customer' do
-      let(:name) { '4x Airport Lounge Access Reward' }
+      let(:name) { Transaction::SPECIAL_REWARD }
       let!(:reward) { create :reward, name: name }
 
       before do
