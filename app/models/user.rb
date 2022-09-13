@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
     premium: 'premium'
   }.freeze
 
-  has_many :earning_histories, dependent: :delete_all
+  has_many :earning_histories, dependent: :destroy
   has_many :rewards, through: :user_rewards
-  has_many :transactions, dependent: :delete_all
-  has_many :user_rewards, dependent: :delete_all
+  has_many :transactions, dependent: :destroy
+  has_many :user_rewards, dependent: :destroy
 
   validates :name, :point, :tier, :currency, presence: true
   validates :point, numericality: { greater_than_or_equal_to: 0 }

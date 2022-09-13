@@ -8,7 +8,7 @@
 
 # clean up data
 Reward.delete_all
-User.delete_all
+User.all.map(&:destroy)
 
 # create rewards
 [
