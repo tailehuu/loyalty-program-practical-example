@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     premium: 'premium'
   }.freeze
 
-  has_many :points
+  has_many :earning_histories
   has_many :rewards, through: :user_rewards
   has_many :transactions
   has_many :user_rewards
