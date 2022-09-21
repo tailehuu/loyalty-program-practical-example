@@ -35,6 +35,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-byebug'
+  gem 'rspec-rails', '~> 3.9.1'
+  gem 'rubocop', require: false
+  gem 'test_after_commit'
 end
 
 group :development do
@@ -45,3 +51,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'redis', '< 4.6'
+gem 'sidekiq'
+gem 'clockwork'
+gem 'figaro'
